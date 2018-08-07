@@ -1,16 +1,14 @@
 import {APP_HAS_STARTED} from "../actions/Control";
-import { GET_USERS_SUCCESS, GET_USERS_ERROR, showSpinner } from '../actions/Users';
-import {apiRequest} from "../actions/Api";
-import { _getUsers } from '../../data/_DATA';
+import { loadUserData } from '../actions/Users';
+import { loadQuestionsData } from '../actions/Questions';
 
-
-export const populateUsers = ({dispatch}) => next => action => {
+export const handleAppHasStarted = ({dispatch}) => next => action => {
   next(action);
 
   if (action.type === APP_HAS_STARTED) {
-    dispatch(showSpinner());
-    dispatch(apiRequest(_getUsers, GET_USERS_SUCCESS, GET_USERS_ERROR));
+    dispatch(loadUserData());
+    dispatch(loadQuestionsData());
   }
 };
 
-export const controlMdl = [populateUsers];
+export const controlMdl = [handleAppHasStarted];

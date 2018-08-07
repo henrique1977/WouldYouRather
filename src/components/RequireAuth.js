@@ -1,14 +1,15 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import * as actions from '../redux/actions/AuthedUser';
 
-export default function(PageComponent) {
+export default function(PageComponent, nextPage) {
   class Auth extends React.Component {
 
     componentWillMount() {
       // Check if user is Authenticated; if not, redirect to /login
       if (!this.props.isAuthedUser) {
+        this.props.setNextPage(nextPage);
         this.props.history.push('/login');
-        console.log('User needs to login');
       }
     }
 
@@ -23,5 +24,5 @@ export default function(PageComponent) {
     isAuthedUser: state.authedUser.isAuthedUser
   });
 
-  return connect(mapStateToProps)(Auth);
+  return connect(mapStateToProps, actions)(Auth);
 }

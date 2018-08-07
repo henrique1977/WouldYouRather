@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import './index.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 import { createStore, applyMiddleware, compose } from 'redux';
@@ -11,6 +12,7 @@ import { appHasStarted } from './redux/actions/Control';
 //Middlewares:
 import { controlMdl } from './redux/middleware/ControlMiddleware';
 import { usersMdl } from  './redux/middleware/UsersMiddleware';
+import { questionsMdl } from  './redux/middleware/QuestionsMiddleware';
 import { api } from './redux/middleware/Api';
 
 // dev tool
@@ -19,7 +21,7 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 //TODO: move this to redux/store.js
 const store = createStore(reducer,
     composeEnhancers(
-        applyMiddleware(...controlMdl, ...usersMdl, api, logger)
+        applyMiddleware(...controlMdl, ...usersMdl, ...questionsMdl, api, logger)
     )
 );
 

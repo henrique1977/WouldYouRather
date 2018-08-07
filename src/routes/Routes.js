@@ -9,14 +9,16 @@ import Home from '../pages/Home';
 import AddQuestion from '../pages/AddQuestion';
 import Leaderboard from '../pages/Leaderboard';
 import Login from '../pages/Login';
+import Logout from '../pages/Logout';
 
 const Routes = () => (
   <Router>
     <div>
       <Route exact path="/" component={Home}/>
       <Route path="/login" component={Login}/>
-      <Route path="/addquestion" component={requireAuth(AddQuestion)}/>
-      <Route path="/leaderboard" component={requireAuth(Leaderboard)}/>
+      <Route path="/addquestion" component={requireAuth(AddQuestion, '/addquestion')}/>
+      <Route path="/leaderboard" component={requireAuth(Leaderboard, '/leaderboard')}/>
+      <Route path="/logout" component={Logout}/>
     </div>
   </Router>
 )

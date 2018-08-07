@@ -2,19 +2,36 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Loading from '../components/Loading';
 import ChooseUser from '../components/ChooseUser';
+import { arrayToDropDown } from '../library/functions';
+import * as actions from '../redux/actions/Users';
+
 
 class Login extends React.Component {
 
-  componentDidMount() {
-    console.log('Login page: ComponentDidMount');
-    console.log(this.props.users);
+  componentDidUpdate() {
+    // if user is authed in, then redirect to home page
+    if (this.props.authedUser.isAuthedUser) {
+      console.log('User is authed, so redirecting');
+      //this.props.history.push('/');
+      this.props.history.push(this.props.authedUser.nextPage);
+    }
+  }
+
+  onLoginClick = (chosenUser) => {
+    this.props.userWasChosen(chosenUser, this.props.users.users);
   }
 
   content(isLoading) {
-    return (isLoading) ? <Loading /> : <ChooseUser users={this.props.users.users}/>;
+    return (isLoading) ?
+              <Loading /> :
+              <ChooseUser
+                usersDropdownData={arrayToDropDown(this.props.users.users)}
+                onLoginClick={this.onLoginClick}
+              />;
   }
 
   render() {
+
     return (
       <div>
         <div>Please Login Here!</div>
@@ -24,11 +41,8 @@ class Login extends React.Component {
   }
 }
 
-const actions = null;
-
 const mapStateToProps = state => ({
-  //pending       : state.ui.pending,
-  //orderInProcess: state.ui.orderInProcess,
+  authedUser: state.authedUser,
   users: state.users
 });
 
