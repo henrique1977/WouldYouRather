@@ -13,4 +13,12 @@ describe('Testing the constants for users actions', () => {
     expect('[questions] Get questions error').toEqual(actions.GET_QUESTIONS_ERROR);
   });
 
+  it('create Update questions with new answer action', () => {
+    const voteOption = 'optionOne';
+    const userId = "myTestUserId111";
+    const questionId = "8xf0y6ziyjabvozdd253nd";
+    const payload = {userId, questionId, voteOption};
+    expect(actions.updateAnswerQuestions(userId, questionId, voteOption)).toEqual({type: '[questions] Update answer questions', payload});
+  });
+
 });

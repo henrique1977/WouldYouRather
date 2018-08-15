@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Loading from '../components/Loading';
 import ChooseUser from '../components/ChooseUser';
-import { arrayToDropDown } from '../library/functions';
+import { objToDropDown } from '../library/functions';
 import * as actions from '../redux/actions/Users';
 
 
@@ -22,10 +22,11 @@ class Login extends React.Component {
   }
 
   content(isLoading) {
+
     return (isLoading) ?
               <Loading /> :
               <ChooseUser
-                usersDropdownData={arrayToDropDown(this.props.users.users)}
+                usersDropdownData={objToDropDown(this.props.users.users)}
                 onLoginClick={this.onLoginClick}
               />;
   }
@@ -33,7 +34,7 @@ class Login extends React.Component {
   render() {
 
     return (
-      <div>
+      <div className="pages-wrapper">
         <div>Please Login Here!</div>
         { this.content(this.props.users.isLoading) }
       </div>

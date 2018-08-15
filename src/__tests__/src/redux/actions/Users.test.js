@@ -41,4 +41,21 @@ describe('Testing users action creators', () => {
     expect(actions.loadUserData()).toEqual({type: '[users] Load user data'});
   });
 
+  it('create action for adding answer to users answer', () => {
+    const answerObj = {"8xf0y6ziyjabvozdd253nd": 'optionOne'};
+    const userId = "myTestUserId111";
+    const payload = {userId, answerObj};
+    expect(actions.updateAnswerUsers(userId, answerObj)).toEqual({type: '[users] Update answer users', payload});
+  });
+
+  it('create Update add answer to users answer', () => {
+    const answerObj = {"8xf0y6ziyjabvozdd253nd": 'optionOne'};
+    const userId = "myTestUserId111";
+    const questionId = "8xf0y6ziyjabvozdd253nd";
+    const payload = {userId, questionId, answerObj};
+    expect(actions.processUpdateAnswer(userId, questionId, answerObj)).toEqual({type: '[users] Process update answer', payload});
+  });
+
+  //updateAnswer
+
 });

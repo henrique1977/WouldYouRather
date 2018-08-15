@@ -2,8 +2,8 @@ import UsersReducer from '../../../../redux/reducers/UsersReducer';
 
 const initialState = {
   isLoading: false,
-  users: [
-    {
+  users: {
+    sarahedo: {
       id: 'sarahedo',
       name: 'Sarah Edo',
       avatarURL: '',
@@ -15,25 +15,25 @@ const initialState = {
       },
       questions: ['8xf0y6ziyjabvozdd253nd', 'am8ehyc8byjqgar0jgpub9']
     }
-  ]
+  }
 }
 
 const initialStateTest = {
   isLoading: false,
-  users: [
-    {
-      id: 'sarahedo',
-      name: 'Peter Panno',
-      avatarURL: 'hrshsys',
-      answers: {
-        "8xf0y6ziyjabvozdd253nd": 'optionOne',
-        "6ni6ok3ym7mf1p33lnez": 'optionOne',
-        "am8ehyc8byjqgar0jgpub9": 'optionTwo',
-        "loxhs1bqm25b708cmbf3g": 'optionTwo'
-      },
-      questions: ['8xf0y6ziyjabvozdd253nd', 'am8ehyc8byjqgar0jgpub9']
+  users: {
+    sarahedo: {
+        id: 'sarahedo',
+        name: 'Peter Panno',
+        avatarURL: 'hrshsys',
+        answers: {
+          "8xf0y6ziyjabvozdd253nd": 'optionOne',
+          "6ni6ok3ym7mf1p33lnez": 'optionOne',
+          "am8ehyc8byjqgar0jgpub9": 'optionTwo',
+          "loxhs1bqm25b708cmbf3g": 'optionTwo'
+        },
+        questions: ['8xf0y6ziyjabvozdd253nd', 'am8ehyc8byjqgar0jgpub9']
     }
-  ]
+  }
 }
 
 describe("Test suite for the UsersReducer initial state", () => {
@@ -97,8 +97,8 @@ const payload = {
 
 const finalState = {
   isLoading: false,
-  users: [
-    {
+  users: {
+    sarahedo: {
       id: 'sarahedo',
       name: 'Sarah Edo',
       avatarURL: '',
@@ -113,7 +113,7 @@ const finalState = {
         'am8ehyc8byjqgar0jgpub9'
       ]
     },
-    {
+    tylermcginnis: {
       id: 'tylermcginnis',
       name: 'Tyler McGinnis',
       avatarURL: '',
@@ -126,7 +126,7 @@ const finalState = {
         'vthrdm985a262al8qx3do'
       ]
     },
-    {
+    johndoe: {
       id: 'johndoe',
       name: 'John Doe',
       avatarURL: '',
@@ -140,7 +140,7 @@ const finalState = {
         'xj352vofupe1dqz9emx13r'
       ]
     }
-  ]
+  }
 }
 
 describe("Test suite for the UsersReducer", () => {
@@ -172,6 +172,70 @@ describe("Test suite for the UsersReducer", () => {
     // make sure it doesn't toggle if you call twice:
     expect(UsersReducer(spStateShow, actionObjToShow)).toEqual(spStateShow);
     expect(UsersReducer(spStateHide, actionObjToHide)).toEqual(spStateHide);
+  });
+
+
+  //finalState
+  it('it updates the answers', () => {
+
+    const expectedFinalState = {
+      isLoading: false,
+      users: {
+        sarahedo: {
+          id: 'sarahedo',
+          name: 'Sarah Edo',
+          avatarURL: '',
+          answers: {
+            '8xf0y6ziyjabvozdd253nd': 'optionOne',
+            '6ni6ok3ym7mf1p33lnez': 'optionOne',
+            am8ehyc8byjqgar0jgpub9: 'optionTwo',
+            loxhs1bqm25b708cmbf3g: 'optionTwo'
+          },
+          questions: [
+            '8xf0y6ziyjabvozdd253nd',
+            'am8ehyc8byjqgar0jgpub9'
+          ]
+        },
+        tylermcginnis: {
+          id: 'tylermcginnis',
+          name: 'Tyler McGinnis',
+          avatarURL: '',
+          answers: {
+            vthrdm985a262al8qx3do: 'optionOne',
+            xj352vofupe1dqz9emx13r: 'optionTwo',
+            "8xf0y6ziyjabvozdd253nd": 'optionOne'
+          },
+          questions: [
+            'loxhs1bqm25b708cmbf3g',
+            'vthrdm985a262al8qx3do'
+          ]
+        },
+        johndoe: {
+          id: 'johndoe',
+          name: 'John Doe',
+          avatarURL: '',
+          answers: {
+            xj352vofupe1dqz9emx13r: 'optionOne',
+            vthrdm985a262al8qx3do: 'optionTwo',
+            '6ni6ok3ym7mf1p33lnez': 'optionOne'
+          },
+          questions: [
+            '6ni6ok3ym7mf1p33lnez',
+            'xj352vofupe1dqz9emx13r'
+          ]
+        }
+      }
+    }
+
+    const answerObj = {"8xf0y6ziyjabvozdd253nd": 'optionOne'};
+    const userId = "tylermcginnis";
+    const payload = {userId, answerObj};
+    const actionObj = {
+      type: '[users] Update answer users',
+      payload: payload
+    }
+
+    expect(UsersReducer(finalState, actionObj)).toEqual(expectedFinalState);
   });
 
 

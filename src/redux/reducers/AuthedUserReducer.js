@@ -22,3 +22,5 @@ export default (state = initialState, action) => {
       return state;
   }
 }
+
+export const selectAuthedUserId = authedUser => ((authedUser.isAuthedUser) ? authedUser.authedUser.id : null);
