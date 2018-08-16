@@ -18,6 +18,8 @@ export const getQuestionWithId = (questions, id) => filterByIdReturnObj(question
 export const findUserWithId = (id, usersArray) => filterByIdReturnObj(usersArray, id);
 
 export const questionHasBeenAnswered = (answers, questionId) => !(Object.keys(answers).filter(key => key === questionId).length === 0);
+export const findUserAnswer = (answers, questionId) => answers[questionId];
+
 
 export const findUserOnObjWithId = (id, users) => users[id];
 

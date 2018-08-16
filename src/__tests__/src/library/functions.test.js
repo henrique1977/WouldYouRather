@@ -432,6 +432,15 @@ describe("Testing questions", () => {
     expect(func.questionHasBeenAnswered([], 'vthrdm985a262al8qx3do')).toEqual(false);
 
   });
+
+  it('returns the answer for a user', () => {
+
+    const answers = {vthrdm985a262al8qx3do: "optionOne", xj352vofupe1dqz9emx13r: "optionTwo"};
+    const questionId = "xj352vofupe1dqz9emx13r";
+
+    expect(func.findUserAnswer(answers, questionId)).toEqual("optionTwo");
+    expect(func.findUserAnswer(answers, "blablablaWrongId")).toEqual();
+  });
 });
 
 describe('Testing getting answered and unanswered questions for a set of question Ids', () => {

@@ -1,9 +1,18 @@
 import React from 'react';
 
-const QuestionAnswered = ({question, updateAnswer, userId}) => {
+const QuestionAnswered = ({question, userId, userAnswer}) => {
 
-  // const answerObj1 = {[question.id]: 'optionOne'};
-  // const answerObj2 = {[question.id]: 'optionTwo'};
+  const {optionOne, optionTwo} = question;
+  console.log(question);
+
+  const numVotesOne = optionOne.votes.length;
+  const numVotesTwo = optionTwo.votes.length;
+  const totalVotes = numVotesOne + numVotesTwo;
+
+  const calcPercentage = (numVotes, totalVotes) => (numVotes===0) ? 0 : ((numVotes/totalVotes)*100).toFixed(2);
+
+  console.log(numVotesOne);
+  console.log(numVotesTwo);
 
   return (
   <div className="question-container">
@@ -12,15 +21,14 @@ const QuestionAnswered = ({question, updateAnswer, userId}) => {
     <div className="subtitle"><h2>Result: </h2></div>
     <div className="options">
       <div className="option option1">
-        <div className="option-item">You chose: </div>
         <div className="option-item">{question.optionOne.text}</div>
-        <div className="option-item">3 votes - 60% of votes</div>
-
+        <div className="option-item">{`votes: ${numVotesOne.toString()} - (${calcPercentage(numVotesOne, totalVotes)}%)`}</div>
+        <div className="option-item"><b>{(userAnswer === "optionOne") ? "Option you've chosen" : ""}</b></div>
       </div>
       <div className="option option2">
-        <div className="option-item"> </div>
         <div className="option-item">{question.optionTwo.text}</div>
-        <div className="option-item">2 votes - 40% of votes</div>
+        <div className="option-item">{`votes: ${numVotesTwo.toString()} - (${calcPercentage(numVotesTwo, totalVotes)}%)`}</div>
+        <div className="option-item"><b>{(userAnswer === "optionTwo") ? "Option you've chosen" : ""}</b></div>
       </div>
     </div>
   </div>
