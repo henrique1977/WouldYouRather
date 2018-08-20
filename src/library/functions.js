@@ -1,4 +1,7 @@
 // UTIL Functional Library
+
+import uuidv1 from 'uuid';
+
 export const objToArray = obj => Object.keys(obj).map(k => obj[k]);
 
 export const arrayToDropDown = usersArray => usersArray.map(obj => ({value: obj.id, label: obj.name}));
@@ -33,4 +36,36 @@ export const getObjsNotInObjWithArrayOfKeys = (questions, ids) => {
   return filterOutWithArrayOfIds(objToArray(questions), ids)
                   .map((obj) => ({[obj.id]: obj}))
                   .reduce((acc, obj) => ({...acc, ...obj}), {});
+};
+
+export const generateId = () => uuidv1();
+
+
+export const buildQuestionObj = (questionId, authorId, timestamp, optionOneString, optionTwoString) => {
+
+  const questionObj = {
+    id: questionId,
+    author: authorId,
+    timestamp: timestamp,
+    optionOne: {
+      votes: [],
+      text: optionOneString
+    },
+    optionTwo: {
+      votes: [],
+      text: optionTwoString
+    }
+  };
+
+  return questionObj;
+};
+
+export const getTotal = (a) => (a.questions.length + objToArray(a.answers).length);
+export const totalQ = a => a.questions.length;
+export const returnMostQuestionsPlusAnswers = (a, b) => getTotal(b) > getTotal(a) ? b : a;
+export const compareTotal = (a, b) => (getTotal(b) === getTotal(a)) ? totalQ(b) - totalQ(a) : getTotal(b) - getTotal(a);
+
+export const sortByTotal = (users) => {
+  users.sort(compareTotal);
+  return users;
 };

@@ -56,44 +56,45 @@ const usersArray = [
       questions: ['loxhs1bqm25b708cmbf3g', 'vthrdm985a262al8qx3do'],
     };
 
+    let users = {
+      sarahedo: {
+        id: 'sarahedo',
+        name: 'Sarah Edo',
+        avatarURL: '',
+        answers: {
+          "8xf0y6ziyjabvozdd253nd": 'optionOne',
+          "6ni6ok3ym7mf1p33lnez": 'optionOne',
+          "am8ehyc8byjqgar0jgpub9": 'optionTwo',
+          "loxhs1bqm25b708cmbf3g": 'optionTwo'
+        },
+        questions: ['8xf0y6ziyjabvozdd253nd', 'am8ehyc8byjqgar0jgpub9']
+      },
+      tylermcginnis: {
+        id: 'tylermcginnis',
+        name: 'Tyler McGinnis',
+        avatarURL: '',
+        answers: {
+          "vthrdm985a262al8qx3do": 'optionOne',
+          "xj352vofupe1dqz9emx13r": 'optionTwo',
+        },
+        questions: ['loxhs1bqm25b708cmbf3g', 'vthrdm985a262al8qx3do'],
+      },
+      johndoe: {
+        id: 'johndoe',
+        name: 'John Doe',
+        avatarURL: '',
+        answers: {
+          "xj352vofupe1dqz9emx13r": 'optionOne',
+          "vthrdm985a262al8qx3do": 'optionTwo',
+          "6ni6ok3ym7mf1p33lnez": 'optionOne'
+        },
+        questions: ['6ni6ok3ym7mf1p33lnez', 'xj352vofupe1dqz9emx13r'],
+      }
+    }
 
 describe('Test suite for single functions', () => {
 
-  let users = {
-    sarahedo: {
-      id: 'sarahedo',
-      name: 'Sarah Edo',
-      avatarURL: '',
-      answers: {
-        "8xf0y6ziyjabvozdd253nd": 'optionOne',
-        "6ni6ok3ym7mf1p33lnez": 'optionOne',
-        "am8ehyc8byjqgar0jgpub9": 'optionTwo',
-        "loxhs1bqm25b708cmbf3g": 'optionTwo'
-      },
-      questions: ['8xf0y6ziyjabvozdd253nd', 'am8ehyc8byjqgar0jgpub9']
-    },
-    tylermcginnis: {
-      id: 'tylermcginnis',
-      name: 'Tyler McGinnis',
-      avatarURL: '',
-      answers: {
-        "vthrdm985a262al8qx3do": 'optionOne',
-        "xj352vofupe1dqz9emx13r": 'optionTwo',
-      },
-      questions: ['loxhs1bqm25b708cmbf3g', 'vthrdm985a262al8qx3do'],
-    },
-    johndoe: {
-      id: 'johndoe',
-      name: 'John Doe',
-      avatarURL: '',
-      answers: {
-        "xj352vofupe1dqz9emx13r": 'optionOne',
-        "vthrdm985a262al8qx3do": 'optionTwo',
-        "6ni6ok3ym7mf1p33lnez": 'optionOne'
-      },
-      questions: ['6ni6ok3ym7mf1p33lnez', 'xj352vofupe1dqz9emx13r'],
-    }
-  }
+
 
   const expectedDropdownArray = [
     { value: 'sarahedo', label: 'Sarah Edo' },
@@ -477,5 +478,129 @@ describe('Testing getting answered and unanswered questions for a set of questio
       expect(func.getObjsNotInObjWithArrayOfKeys(questions, ids)).toEqual(expectedNotContainObj);
     });
 
+    it('creates an ID that is 20 to 25 chars long', () => {
+      expect(func.generateId()).toBeDefined();
+      expect(func.generateId().length).toBeGreaterThan(20);
+    });
 
+});
+
+describe('tests building an question obj', () => {
+  it('returns a question obj', () => {
+
+    const questionId = 'xj352vofupe1dqz9emx13r';
+    const authorId = 'johndoe';
+    const timestamp = 1493579767190;
+    const optionOneString = 'write JavaScript';
+    const optionTwoString = 'write Swift';
+
+    const questionObj = {
+      id: questionId,
+      author: authorId,
+      timestamp: timestamp,
+      optionOne: {
+        votes: [],
+        text: optionOneString
+      },
+      optionTwo: {
+        votes: [],
+        text: optionTwoString
+      }
+    };
+
+    expect(func.buildQuestionObj(questionId, authorId, timestamp, optionOneString, optionTwoString)).toEqual(questionObj);
+
+  });
+});
+
+describe('tests mapping to add total', () => {
+  it('returns a mapped obj containing the total questions + answers', () => {
+
+    const unsortedUsers = [ { id: 'sarahedo',
+          name: 'Sarah Edo',
+          avatarURL: '',
+          answers:
+           { '8xf0y6ziyjabvozdd253nd': 'optionOne',
+             '6ni6ok3ym7mf1p33lnez': 'optionOne',
+             am8ehyc8byjqgar0jgpub9: 'optionTwo',
+             loxhs1bqm25b708cmbf3g: 'optionTwo' },
+          questions: [ '8xf0y6ziyjabvozdd253nd', 'am8ehyc8byjqgar0jgpub9' ] },
+        { id: 'tylermcginnis',
+          name: 'Tyler McGinnis',
+          avatarURL: '',
+          answers:
+           { vthrdm985a262al8qx3do: 'optionOne',
+             xj352vofupe1dqz9emx13r: 'optionTwo' },
+          questions: [ 'loxhs1bqm25b708cmbf3g', 'vthrdm985a262al8qx3do' ] },
+        { id: 'johndoe',
+          name: 'John Doe',
+          avatarURL: '',
+          answers:
+           { xj352vofupe1dqz9emx13r: 'optionOne',
+             vthrdm985a262al8qx3do: 'optionTwo',
+             '6ni6ok3ym7mf1p33lnez': 'optionOne' },
+          questions: [ '6ni6ok3ym7mf1p33lnez', 'xj352vofupe1dqz9emx13r' ] } ];
+
+
+
+    const sortedUsers = [
+        {
+          id: 'sarahedo',
+          name: 'Sarah Edo',
+          avatarURL: '',
+          answers:
+           { '8xf0y6ziyjabvozdd253nd': 'optionOne',
+             '6ni6ok3ym7mf1p33lnez': 'optionOne',
+             am8ehyc8byjqgar0jgpub9: 'optionTwo',
+             loxhs1bqm25b708cmbf3g: 'optionTwo' },
+          questions: [ '8xf0y6ziyjabvozdd253nd', 'am8ehyc8byjqgar0jgpub9' ] },
+        {
+          id: 'johndoe',
+          name: 'John Doe',
+          avatarURL: '',
+          answers:
+           { xj352vofupe1dqz9emx13r: 'optionOne',
+             vthrdm985a262al8qx3do: 'optionTwo',
+             '6ni6ok3ym7mf1p33lnez': 'optionOne' },
+          questions: [ '6ni6ok3ym7mf1p33lnez', 'xj352vofupe1dqz9emx13r' ] },
+        {
+          id: 'tylermcginnis',
+          name: 'Tyler McGinnis',
+          avatarURL: '',
+          answers:
+           { vthrdm985a262al8qx3do: 'optionOne',
+             xj352vofupe1dqz9emx13r: 'optionTwo' },
+          questions: [ 'loxhs1bqm25b708cmbf3g', 'vthrdm985a262al8qx3do' ]
+        }
+      ];
+
+    const userA = {
+            id: 'sarahedo',
+            name: 'Sarah Edo',
+            avatarURL: '',
+            answers:
+             { '8xf0y6ziyjabvozdd253nd': 'optionOne',
+               '6ni6ok3ym7mf1p33lnez': 'optionOne',
+               am8ehyc8byjqgar0jgpub9: 'optionTwo',
+               loxhs1bqm25b708cmbf3g: 'optionTwo' },
+            questions: [ '8xf0y6ziyjabvozdd253nd', 'am8ehyc8byjqgar0jgpub9' ]
+    };
+
+    const userB = {
+              id: 'johndoe',
+              name: 'John',
+              avatarURL: '',
+              answers:
+              { '8xf0y6ziyjabvozdd253nd': 'optionOne',
+                loxhs1bqm25b708cmbf3g: 'optionTwo' },
+              questions: [ '6ni6ok3ym7mf1p33lnez', 'xj352vofupe1dqz9emx13r' ]
+    };
+
+    //expect(func.sortByTotal(unsortedUsers)).toEqual(sortedUsers);
+
+    expect(func.getTotal(userA)).toEqual(6);
+    expect(func.returnMostQuestionsPlusAnswers(userB, userA)).toEqual(userA);
+    expect(func.sortByTotal(unsortedUsers)).toEqual(sortedUsers);
+
+  });
 });

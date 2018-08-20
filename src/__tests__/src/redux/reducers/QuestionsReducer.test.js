@@ -284,9 +284,110 @@ describe("Test suite for the QuestionsReducer", () => {
       type: '[questions] Update answer questions',
       payload: {userId, questionId, voteOption}
     };
-    
+
     expect(QuestionsReducer(testState, answerActionObj)).toEqual(testStateWithVote);
   });
+
+  it('adds a new question', () => {
+
+    const question = {
+      id: 'G4L0k6zi9lkCv54ddLh9Rf',
+      author: 'sarahedo',
+      timestamp: 1467166872634,
+      optionOne: {
+        votes: [],
+        text: 'my option one text',
+      },
+      optionTwo: {
+        votes: [],
+        text: 'option two goes here'
+      }
+    };
+
+    const questionActionObj = {
+      type: '[questions] Save new question',
+      payload: question
+    };
+
+    const state1 = {
+      questions: {
+        "8xf0y6ziyjabvozdd253nd": {
+          id: '8xf0y6ziyjabvozdd253nd',
+          author: 'sarahedo',
+          timestamp: 1467166872634,
+          optionOne: {
+            votes: ['sarahedo'],
+            text: 'have horrible short term memory',
+          },
+          optionTwo: {
+            votes: [],
+            text: 'have horrible long term memory'
+          }
+        },
+        "6ni6ok3ym7mf1p33lnez": {
+          id: '6ni6ok3ym7mf1p33lnez',
+          author: 'johndoe',
+          timestamp: 1468479767190,
+          optionOne: {
+            votes: [],
+            text: 'become a superhero',
+          },
+          optionTwo: {
+            votes: ['johndoe', 'sarahedo'],
+            text: 'become a supervillian'
+          }
+        }
+      }
+    };
+
+    const state2 = {
+      questions: {
+        "8xf0y6ziyjabvozdd253nd": {
+          id: '8xf0y6ziyjabvozdd253nd',
+          author: 'sarahedo',
+          timestamp: 1467166872634,
+          optionOne: {
+            votes: ['sarahedo'],
+            text: 'have horrible short term memory',
+          },
+          optionTwo: {
+            votes: [],
+            text: 'have horrible long term memory'
+          }
+        },
+        "6ni6ok3ym7mf1p33lnez": {
+          id: '6ni6ok3ym7mf1p33lnez',
+          author: 'johndoe',
+          timestamp: 1468479767190,
+          optionOne: {
+            votes: [],
+            text: 'become a superhero',
+          },
+          optionTwo: {
+            votes: ['johndoe', 'sarahedo'],
+            text: 'become a supervillian'
+          }
+        },
+        "G4L0k6zi9lkCv54ddLh9Rf": {
+          id: 'G4L0k6zi9lkCv54ddLh9Rf',
+          author: 'sarahedo',
+          timestamp: 1467166872634,
+          optionOne: {
+            votes: [],
+            text: 'my option one text',
+          },
+          optionTwo: {
+            votes: [],
+            text: 'option two goes here'
+          }
+        },
+      }
+    };
+
+
+    expect(QuestionsReducer(state1, questionActionObj)).toEqual(state2);
+  });
+
 
 
 });

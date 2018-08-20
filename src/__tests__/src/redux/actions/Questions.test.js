@@ -21,4 +21,29 @@ describe('Testing the constants for users actions', () => {
     expect(actions.updateAnswerQuestions(userId, questionId, voteOption)).toEqual({type: '[questions] Update answer questions', payload});
   });
 
+  it('create add new question action', () => {
+    const userId = "myTestUserId111";
+    const optionsObj = {optionOne: 'my op 1', optionTwo: 'my op 2'};
+    const payload = {userId,  optionsObj}
+    expect(actions.addNewQuestion(userId, optionsObj)).toEqual({type: '[questions] Add new question', payload});
+  });
+
+  it('create action to save a new question', () => {
+    const question = {
+      id: 'G4L0k6zi9lkCv54ddLh9Rf',
+      author: 'sarahedo',
+      timestamp: 1467166872634,
+      optionOne: {
+        votes: [],
+        text: 'my option one text',
+      },
+      optionTwo: {
+        votes: [],
+        text: 'option two goes here'
+      }
+    };
+
+    expect(actions.saveNewQuestion(question)).toEqual({type: '[questions] Save new question', payload: question});
+  });
+
 });

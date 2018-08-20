@@ -1,4 +1,4 @@
-import { GET_QUESTIONS_SUCCESS, UPDATE_ANSWER_ON_QUESTION } from '../actions/Questions';
+import { GET_QUESTIONS_SUCCESS, UPDATE_ANSWER_ON_QUESTION, SAVE_NEW_QUESTION } from '../actions/Questions';
 import { getObjsWithArrayOfKeys, getObjsNotInObjWithArrayOfKeys } from '../../library/functions';
 
 const initialState = {
@@ -22,6 +22,13 @@ export default (state = initialState, action) => {
       return {...state, questions: {...state.questions, ...updatedQuestion}};
     }
 
+    case SAVE_NEW_QUESTION: {
+      const question = action.payload;
+      return {...state, questions: {...state.questions, [question.id]: question}};
+      // const newQuestion = {question.id}
+      // return {...state};
+    }
+
     default:
       return state;
   }
@@ -29,13 +36,3 @@ export default (state = initialState, action) => {
 
 export const selectAnsweredQuestions = (questions, ids) => ((!ids || !questions) ? {} : getObjsWithArrayOfKeys(questions, ids));
 export const selectUnansweredQuestions = (questions, ids) => ((!ids || !questions) ? {} : getObjsNotInObjWithArrayOfKeys(questions, ids));
-
-// export const selectAnsweredQuestions = (questions, ids) => {
-//   console.log('SLELELELE');
-//   console.log(questions.questions);
-//   console.log(ids);
-//
-//   return [];
-// };
-//
-// export const selectUnansweredQuestions = (questions, ids) => [];

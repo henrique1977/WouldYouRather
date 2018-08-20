@@ -56,6 +56,11 @@ describe('Testing users action creators', () => {
     expect(actions.processUpdateAnswer(userId, questionId, answerObj)).toEqual({type: '[users] Process update answer', payload});
   });
 
-  //updateAnswer
+  it('create action save a new question', () => {
+    const questionId = 'G4L0k6zi9lkCv54ddLh9Rf';
+    const userId = "myTestUserId111";
+    const payload = {userId, questionId};
+    expect(actions.saveQuestionToUsers(userId, questionId)).toEqual({type: '[users] Save new question', payload});
+  });
 
 });

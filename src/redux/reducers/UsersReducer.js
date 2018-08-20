@@ -1,4 +1,4 @@
-import { GET_USERS_SUCCESS, SHOW_SPINNER, HIDE_SPINNER, UPDATE_ANSWER } from '../actions/Users';
+import { GET_USERS_SUCCESS, SHOW_SPINNER, HIDE_SPINNER, UPDATE_ANSWER, SAVE_NEW_QUESTION_TO_USERS } from '../actions/Users';
 import { findUserOnObjWithId, extractQuestions } from '../../library/functions';
 
 const initialState = {
@@ -40,6 +40,13 @@ export default (state = initialState, action) => {
       const {userId, answerObj} = action.payload;
       const user = state.users[userId];
       return {...state, users: {...state.users, [userId]: {...user, answers: {...user.answers, ...answerObj}}}};
+    }
+
+    case SAVE_NEW_QUESTION_TO_USERS: {
+      const {userId, questionId} = action.payload;
+      const user = state.users[userId];
+      const newUserObj = {...user, questions: [...user.questions, questionId]};
+      return {...state, users: {...state.users, [userId]: newUserObj}};
     }
 
     default:

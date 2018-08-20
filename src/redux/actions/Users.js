@@ -6,6 +6,7 @@ export const USER_WAS_CHOSEN = '[users] User was chosen';
 export const LOAD_USER_DATA = '[users] Load user data';
 export const UPDATE_ANSWER = '[users] Update answer users';
 export const PROCESS_UPDATE_ANSWER = '[users] Process update answer';
+export const SAVE_NEW_QUESTION_TO_USERS = '[users] Save new question';
 
 export const showSpinner = () => ({
   type: SHOW_SPINNER
@@ -33,3 +34,11 @@ export const processUpdateAnswer = (userId, questionId, answerObj) => ({
   type: PROCESS_UPDATE_ANSWER,
   payload: {userId, questionId, answerObj}
 });
+
+export const saveQuestionToUsers = (userId, questionId) => ({
+  type: SAVE_NEW_QUESTION_TO_USERS,
+  payload: {userId, questionId}
+});
+
+
+//saveQuestionToUsers(userId, answerObj)).toEqual({type: '[users] Save new question', payload});
