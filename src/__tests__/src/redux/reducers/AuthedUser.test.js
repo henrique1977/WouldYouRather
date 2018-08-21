@@ -57,6 +57,15 @@ describe("Test suite for the AuthedUserReducer", () => {
     expect(AuthedUserReducer(defaultEmptyState, {type: '[auth] Set next page', payload: nextPage})).toEqual(finalState);
   });
 
-  //'[auth] Authenticate user'
+  it('it logs out the user', () => {
+
+    const loggedOutState = {
+      isAuthedUser: false,
+      authedUser: null,
+      nextPage: '/'
+    };
+
+    expect(AuthedUserReducer(testState, {type: '[auth] Log user out'})).toEqual(loggedOutState);
+  });
 
 });

@@ -41,4 +41,11 @@ describe('Testing AuthedUser action creators', () => {
     expect(actions.setNextPage(anyRoute)).toEqual(nextPageActionObj);
   });
 
+  it('creates an action to set authedUser to logged out', () => {
+    const logoutActionObj = {
+      type: '[auth] Log user out'
+    };
+    expect(actions.logUserOut()).toEqual(logoutActionObj);
+  });
+
 });

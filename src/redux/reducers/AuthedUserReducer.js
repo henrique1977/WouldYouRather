@@ -1,4 +1,4 @@
-import { AUTHENTICATE_USER, SET_NEXT_PAGE } from '../actions/AuthedUser';
+import { AUTHENTICATE_USER, SET_NEXT_PAGE, LOG_USER_OUT } from '../actions/AuthedUser';
 
 const initialState = {
   isAuthedUser: false,
@@ -16,6 +16,10 @@ export default (state = initialState, action) => {
 
     case SET_NEXT_PAGE: {
       return {...state, nextPage: action.payload};
+    }
+
+    case LOG_USER_OUT: {
+      return initialState;
     }
 
     default:
