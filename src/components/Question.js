@@ -9,8 +9,8 @@ export const Question = ({question}) => (
       <div className="question-link-content">
 
         <div className="question-link-content-left" >
-          <img src='/images/avatar_tyler_100x100.png' alt="avatar" width="100" height="100" className="question-avatar"/>
-          
+          <img src='/images/avatar_tyler_100_100.png' alt="avatar" width="100" height="100" className="question-avatar"/>
+
         </div>
         <div className="question-link-content-middle"><hr className="question-link-separator"/></div>
         <div className="question-link-content-right">

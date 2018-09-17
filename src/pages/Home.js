@@ -13,12 +13,14 @@ class Home extends React.Component {
 
   render() {
 
+    console.log(this.props);
+
     // destructuring and renaming
     const { answeredQuestions: answered, unansweredQuestions: unanswered } = this.props;
 
     return (
       <div className="pages-wrapper">
-        <Menu page='home'/>
+        <Menu page='home' history={this.props.history}/>
         <QuestionsList questions={{answered: objToArray(answered), unanswered: objToArray(unanswered)}} />
       </div>
     );

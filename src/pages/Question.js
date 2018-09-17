@@ -26,7 +26,7 @@ const Question = (props) => {
 
   return (
     <div className="pages-wrapper">
-      <Menu />
+      <Menu history={props.history}/>
       {(hasBeenAnswered) ?
           <QuestionAnswered question={selectedQuestion} userId={props.loggedInUser.id} userAnswer={userAnswer} />
         : <QuestionUnanswered question={selectedQuestion} userId={props.loggedInUser.id} processUpdateAnswer={props.processUpdateAnswer}/>

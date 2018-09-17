@@ -17,7 +17,7 @@ class Leaderboard extends React.Component {
 
     return (
       <div className="pages-wrapper">
-        <Menu page='leaderboard'/>
+        <Menu page='leaderboard' history={this.props.history}/>
         <div >Leaderboard</div>
         <div className="questions-wrapper">
 

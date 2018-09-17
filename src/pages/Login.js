@@ -35,7 +35,7 @@ class Login extends React.Component {
 
     return (
       <div className="pages-wrapper">
-        <div>Please Login Here!</div>
+        <div>Please Login: <br /></div>
         { this.content(this.props.users.isLoading) }
       </div>
     );

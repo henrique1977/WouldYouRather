@@ -1,11 +1,17 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from "react-router-dom";
+import { logout } from '../redux/actions/AuthedUser';
 
-const Menu = ({page, authedUser}) => {
+const Menu = ({page, authedUser, logout, history}) => {
 
   const selected = {color: "#feb954"};
   const name = (authedUser.isAuthedUser) ? authedUser.authedUser.name : '';
+
+  const doLogout = () => {
+    logout();
+    history.push('/logout');
+  }
 
   return (
     <div className="menu">
@@ -17,7 +23,7 @@ const Menu = ({page, authedUser}) => {
         </div>
         <div className="menu-right">
           <div className="menu-item-hello">Welcome, {name}</div>
-          <Link to="/logout" className="menu-item" style={menuItemStyle}>Logout</Link>
+            <a className="menu-item" href="" style={menuItemStyle} onClick={doLogout}>Logout</a>
         </div>
       </div>
       <div className="menu-separator">
@@ -42,5 +48,9 @@ const mapStateToProps = state => {
   });
 };
 
+const mapDispatchToProps = {
+ logout,
+};
+
 //export default Menu;
-export default connect(mapStateToProps, null)(Menu);
+export default connect(mapStateToProps, mapDispatchToProps)(Menu);
