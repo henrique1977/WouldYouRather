@@ -18,7 +18,7 @@ class Home extends React.Component {
 
     return (
       <div className="pages-wrapper">
-        <Menu />
+        <Menu page='home'/>
         <QuestionsList questions={{answered: objToArray(answered), unanswered: objToArray(unanswered)}} />
       </div>
     );

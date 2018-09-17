@@ -17,7 +17,7 @@ class Leaderboard extends React.Component {
 
     return (
       <div className="pages-wrapper">
-        <Menu />
+        <Menu page='leaderboard'/>
         <div >Leaderboard</div>
         <div className="questions-wrapper">
 

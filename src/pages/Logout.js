@@ -3,9 +3,13 @@ import { connect } from 'react-redux';
 import { logout } from '../redux/actions/AuthedUser';
 
 
-const Logout = (props) => {
-    console.log('logout ***');
-    console.log(props.authedUser);
+class Logout extends React.Component {
+
+  componentDidMount() {
+    const props = this.props;
+
+    console.log('logout will mount');
+    console.log(props);
 
     if (props.authedUser.isAuthedUser) {
       props.logout();
@@ -13,8 +17,12 @@ const Logout = (props) => {
     else {
       props.history.push('/');
     }
+  }
 
+  render() {
     return (<div>Logout!</div>);
+  }
+
 }
 
 const mapStateToProps = state =>({

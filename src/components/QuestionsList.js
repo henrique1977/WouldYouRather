@@ -20,7 +20,6 @@ const QuestionsList = ({showAnswered, setShowAnswered, questions}) => {
 
       {answerButton}
 
-      Would you rather:
       { questionsArray.map( (question) => (
         <Question key={question.id} question={question} />
       ))}

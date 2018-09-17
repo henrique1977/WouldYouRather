@@ -41,7 +41,7 @@ class AddQuestion extends React.Component {
 
     return (
     <div className="pages-wrapper">
-      <Menu />
+      <Menu page='addQuestion'/>
       <div >Add a Question</div>
       <div className="add-question-form">
         <div className='error-message'>{(this.state.hasError) ? errorMessage : null}</div>
