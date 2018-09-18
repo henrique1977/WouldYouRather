@@ -176,7 +176,7 @@ body {
 .question-link-content {
   display: flex;
   flex-direction: row;
-  height: 200px;
+  height: 120px;
   justify-content: space-between;
 }
 .question-link-separator {
@@ -188,15 +188,24 @@ body {
 }
 .question-link-content-left {
   display: flex;
-  flex: 3;
+  flex: 18;
+  justify-content: center;
+  text-align:center;
+  padding-left: 6px;
+  padding-top: 7px;
+
 }
 .question-link-content-middle {
   display: flex;
   flex: 1;
+  justify-content: center;
+
 }
 .question-link-content-right {
   display: flex;
-  flex: 8;
+  flex: 48;
+  padding-left: 8px;
+
 
 }
 .question-avatar {

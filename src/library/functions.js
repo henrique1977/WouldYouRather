@@ -69,3 +69,9 @@ export const sortByTotal = (users) => {
   users.sort(compareTotal);
   return users;
 };
+
+export const sortQuestionsDesc = (arrayToSort) => {
+  return arrayToSort.sort((objA, objB) => {
+    return objB.timestamp - objA.timestamp;
+  });
+}

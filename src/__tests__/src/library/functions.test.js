@@ -604,3 +604,25 @@ describe('tests mapping to add total', () => {
 
   });
 });
+
+describe('test suite to sort questions', () => {
+  it('sorts questions array by timestamp', () => {
+
+    const unsortedQuestions = [
+      {id: "idQuestion1", author: "plinioBla", timestamp: 1467166872634},
+      {id: "idQuestion2", author: "ToniaHarding", timestamp: 1468479767190},
+      {id: "idQuestion3", author: "dontmatter", timestamp: 1482579767190},
+      {id: "idQuestion4", author: "NancyKarrigan", timestamp: 1489579767190},
+    ];
+
+    const sortedQuestions = [
+      {id: "idQuestion4", author: "NancyKarrigan", timestamp: 1489579767190},
+      {id: "idQuestion3", author: "dontmatter", timestamp: 1482579767190},
+      {id: "idQuestion2", author: "ToniaHarding", timestamp: 1468479767190},
+      {id: "idQuestion1", author: "plinioBla", timestamp: 1467166872634},
+    ];
+
+    expect(func.sortQuestionsDesc(unsortedQuestions)).toEqual(sortedQuestions);
+
+  });
+});

@@ -4,7 +4,7 @@ import * as actions from '../redux/actions/Users';
 import { selectLoggedInUser, selectAnsweredQuestionIds } from '../redux/reducers/UsersReducer';
 import { selectAnsweredQuestions, selectUnansweredQuestions } from '../redux/reducers/QuestionsReducer';
 import { selectAuthedUserId } from '../redux/reducers/AuthedUserReducer';
-import { objToArray } from '../library/functions';
+import { objToArray, sortQuestionsDesc } from '../library/functions';
 import Menu from '../components/Menu';
 import QuestionsList from '../components/QuestionsList';
 
@@ -13,15 +13,13 @@ class Home extends React.Component {
 
   render() {
 
-    console.log(this.props);
-
     // destructuring and renaming
-    const { answeredQuestions: answered, unansweredQuestions: unanswered } = this.props;
+    const { answeredQuestions: answered, unansweredQuestions: unanswered, users } = this.props;
 
     return (
       <div className="pages-wrapper">
         <Menu page='home' history={this.props.history}/>
-        <QuestionsList questions={{answered: objToArray(answered), unanswered: objToArray(unanswered)}} />
+        <QuestionsList questions={{answered: sortQuestionsDesc(objToArray(answered)), unanswered: sortQuestionsDesc(objToArray(unanswered))}} users={users} />
       </div>
     );
   };
