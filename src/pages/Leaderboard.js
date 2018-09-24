@@ -10,6 +10,8 @@ class Leaderboard extends React.Component {
 
   render() {
 
+    console.log(this.props);
+
     console.log(this.props.users.users);
     const {users} = this.props.users;
 
@@ -18,14 +20,26 @@ class Leaderboard extends React.Component {
     return (
       <div className="pages-wrapper">
         <Menu page='leaderboard' history={this.props.history}/>
-        <div >Leaderboard</div>
-        <div className="questions-wrapper">
+        <div className="leaderboard-container">
+          <div className="leaderboard-header">
+            <div className="leaderboard-title">Leaderboard</div>
+          </div>
+          <div className="leaderboard-wrapper">
 
-          { sortByTotal(objToArray(users)).map( (user) => (
-            <User key={user.id} user={user} />
-          ))}
+            <div className="table-row header">
+              <div className="text">Name</div>
+              <div className="text">Avatar</div>
+              <div className="num">Total</div>
+              <div className="num">Questions</div>
+              <div className="num">Answers</div>
+            </div>
 
-      </div>
+            { sortByTotal(objToArray(users)).map( (user) => (
+              <User key={user.id} user={user} />
+            ))}
+
+          </div>
+        </div>
       </div>
     );
   }
