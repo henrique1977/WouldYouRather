@@ -42,13 +42,14 @@ class AddQuestion extends React.Component {
     return (
     <div className="pages-wrapper">
       <Menu page='addQuestion' history={this.props.history}/>
-      <div >Add a Question</div>
+      <div >Add a Question - Would you rather </div>
       <div className="add-question-form">
         <div className='error-message'>{(this.state.hasError) ? errorMessage : null}</div>
         <form onSubmit={this.handleSubmit} >
-          <input id="optionOne" type="text" name="optionOne" placeholder="Option one"  />
-          <input id="optionTwo" type="text" name="optionTwo" placeholder="Option one"  />
-          <button>Save Question</button>
+          <input id="optionOne" type="text" name="optionOne" placeholder="Option one" size="37" className="addquestion-question" />
+          <span className="addquestion-middle"> OR </span>
+          <input id="optionTwo" type="text" name="optionTwo" placeholder="Option two" size="37" className="addquestion-question" />
+          <span className="addquestion-button-container"><button className="addquestion-button">Save Question</button></span>
         </form>
       </div>
     </div>

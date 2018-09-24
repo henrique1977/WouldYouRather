@@ -5,7 +5,6 @@ import { findUserOnObjWithId } from '../library/functions';
 import Question from './Question';
 import MyButton from './MyButton';
 
-
 const QuestionsList = ({showAnswered, setShowAnswered, questions, users}) => {
 
   console.log('inside questionsList');

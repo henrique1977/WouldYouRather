@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 // handles authentication
 import requireAuth from '../components/RequireAuth';
@@ -15,12 +15,14 @@ import Logout from '../pages/Logout';
 const Routes = () => (
   <Router>
     <div>
-      <Route exact path="/" component={requireAuth(Home, '/')}/>
-      <Route path="/login" component={Login}/>
-      <Route path="/addquestion" component={requireAuth(AddQuestion, '/addquestion')}/>
-      <Route path="/leaderboard" component={requireAuth(Leaderboard, '/leaderboard')}/>
-      <Route path="/logout" component={Logout}/>
-      <Route path="/question/:question_id" component={requireAuth(Question, '/')}/>
+
+        <Route exact path="/" component={requireAuth(Home, '/')}/>
+        <Route path="/login" component={Login}/>
+        <Route path="/addquestion" component={requireAuth(AddQuestion, '/addquestion')}/>
+        <Route path="/leaderboard" component={requireAuth(Leaderboard, '/leaderboard')}/>
+        <Route path="/logout" component={Logout}/>
+        <Route path="/question/:question_id" component={requireAuth(Question, '/')}/>
+      
     </div>
   </Router>
 )

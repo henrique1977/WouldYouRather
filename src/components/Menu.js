@@ -10,7 +10,7 @@ const Menu = ({page, authedUser, logout, history}) => {
 
   const doLogout = () => {
     logout();
-    history.push('/logout');
+    history.push('/login');
   }
 
   return (
@@ -23,7 +23,7 @@ const Menu = ({page, authedUser, logout, history}) => {
         </div>
         <div className="menu-right">
           <div className="menu-item-hello">Welcome, {name}</div>
-            <a className="menu-item" href="" style={menuItemStyle} onClick={doLogout}>Logout</a>
+            <button className="menu-item logout-button" href="" style={menuItemStyle} onClick={doLogout}>Logout</button>
         </div>
       </div>
       <div className="menu-separator">
