@@ -27,4 +27,4 @@ All of the redux portion was developed in TDD (test driven development). To run 
 This launches the test runner in the interactive watch mode.<br>
 See the section about [running tests](#running-tests) for more information.
 
-Tests can be found at /src/__tests__
+Tests can be found at '/src/__tests__'
