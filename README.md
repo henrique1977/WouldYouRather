@@ -4,12 +4,14 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 For more info on create-react-app please view:
 (https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md).
 
-## To install the dependencies, in the project root folder, run:
+## Dependencies
+To install the dependencies, in the project root folder, run:
 
 ### `npm install`
 
 
-## To star a web server, run:
+## Running the App
+To star a web server, run:
 
 ### `npm start`
 
@@ -17,7 +19,9 @@ This runs the app in the development mode.<br>
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 
-## All of the redux portion was developed in TDD (test driven development). To run those tests, run:
+## Tests
+All of the redux portion was developed in TDD (test driven development). To run those tests, run:
+
 ### `npm test`
 
 This launches the test runner in the interactive watch mode.<br>
