@@ -28,7 +28,7 @@ const QuestionAnswered = ({question, userId, userAnswer}) => {
       <div className="option option1">
         <div className="option-item">{question.optionOne.text}</div>
         <div className="option-item">{`votes: ${numVotesOne.toString()} (${calcPercentage(numVotesOne, totalVotes)}%)`}</div>
-        <div className="option-item">{(userAnswer === "optionOne") ? "Option you've chosen" : ""}</div>
+        <div className="option-item"><b>{(userAnswer === "optionOne") ? "Option you've chosen" : ""}</b></div>
       </div>
       <div className="option option2">
         <div className="option-item">{question.optionTwo.text}</div>

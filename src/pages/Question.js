@@ -11,32 +11,26 @@ import QuestionAnswered from '../components/QuestionAnswered';
 const Question = (props) => {
 
   if (!props.loggedInUser) {
-    props.history.push('/');
-    return (<div></div>);
+    // grab correct URL (path) and set on redux/state
+    props.setNextPage(props.location.pathname);
+    props.history.push('/login');
+    return (null);
   }
 
-  console.log('QUESTION PAGE: ');
-  console.log(props);
-
   const {question_id: questionId} = props.match.params;
-  //const questionId = 'foo';
   const {questions} = props.questions;
-  const selectedQuestion = questions[questionId]; //@TODO: make sure we find a question, handle error
+  const selectedQuestion = questions[questionId];
 
-  // if (!selectedQuestion) {
-  //   props.history.push('/404');
-  // }
-
-  console.log(selectedQuestion);
+  // 404 redirect here - If ID doesn't match any question, redirect to 404 page:
+  if (!selectedQuestion) {
+    props.history.push('/Page404');
+    return (null);
+  }
 
   const answers = props.loggedInUser.answers;
   const hasBeenAnswered = questionHasBeenAnswered(answers, questionId);
   const userAnswer = findUserAnswer(answers, questionId);
-
-  // @TODO: implement 404 redirect here
-
   const questionAuthor = findUserOnObjWithId(selectedQuestion.author, props.users.users);
-
 
   return (
     <div className="pages-wrapper">
