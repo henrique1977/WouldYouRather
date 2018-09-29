@@ -11,8 +11,6 @@ class Login extends React.Component {
   componentDidUpdate() {
     // if user is authed in, then redirect to home page
     if (this.props.authedUser.isAuthedUser) {
-      console.log('User is authed, so redirecting');
-      //this.props.history.push('/');
       this.props.history.push(this.props.authedUser.nextPage);
     }
   }
@@ -48,4 +46,3 @@ const mapStateToProps = state => ({
 });
 
 export default connect(mapStateToProps, actions)(Login);
-//export default () => <div>Please Login</div>;

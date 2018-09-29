@@ -8,9 +8,6 @@ class Logout extends React.Component {
   componentDidMount() {
     const props = this.props;
 
-    console.log('logout will mount');
-    console.log(props);
-
     if (props.authedUser.isAuthedUser) {
       props.logout();
     }

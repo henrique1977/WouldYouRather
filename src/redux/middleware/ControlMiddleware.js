@@ -17,7 +17,6 @@ export const handleLogout = ({dispatch}) => next => action => {
 
   if (action.type === LOGOUT_USER) {
     dispatch(logUserOut());
-    //dispatch(loadQuestionsData());
   }
 };
 

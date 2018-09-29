@@ -9,7 +9,6 @@ export const populateQuestions = ({dispatch}) => next => action => {
   next(action);
 
   if (action.type === LOAD_QUESTIONS_DATA) {
-    //dispatch(showSpinner());
     dispatch(apiRequest(_getQuestions, GET_QUESTIONS_SUCCESS, GET_QUESTIONS_ERROR));
   }
 };

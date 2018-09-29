@@ -39,6 +39,3 @@ export const saveQuestionToUsers = (userId, questionId) => ({
   type: SAVE_NEW_QUESTION_TO_USERS,
   payload: {userId, questionId}
 });
-
-
-//saveQuestionToUsers(userId, answerObj)).toEqual({type: '[users] Save new question', payload});

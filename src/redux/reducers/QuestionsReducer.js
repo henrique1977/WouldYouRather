@@ -24,9 +24,7 @@ export default (state = initialState, action) => {
 
     case SAVE_NEW_QUESTION: {
       const question = action.payload;
-      return {...state, questions: {...state.questions, [question.id]: question}};
-      // const newQuestion = {question.id}
-      // return {...state};
+      return {...state, questions: {...state.questions, [question.id]: question}};      
     }
 
     default:
