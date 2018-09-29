@@ -1,5 +1,12 @@
 import UsersReducer from '../../../../redux/reducers/UsersReducer';
 
+const defaultEmptyState = {
+  isLoading: false,
+  users: {
+
+  }
+}
+
 const initialState = {
   isLoading: false,
   users: {
@@ -39,7 +46,7 @@ const initialStateTest = {
 describe("Test suite for the UsersReducer initial state", () => {
 
   it('it renders default state', () => {
-    expect(UsersReducer(undefined, {})).toEqual(initialState);
+    expect(UsersReducer(undefined, {})).toEqual(defaultEmptyState);
     expect(UsersReducer(initialState, {})).toEqual(initialState);
   });
 

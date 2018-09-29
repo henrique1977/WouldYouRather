@@ -22,7 +22,7 @@ const Routes = () => (
         <Route path="/add" component={requireAuth(AddQuestion, '/add')}/>
         <Route path="/leaderboard" component={requireAuth(Leaderboard, '/leaderboard')}/>
         <Route path="/logout" component={Logout}/>
-        <Route path="/question/:question_id" component={requireAuth(Question, "/question/:question_id")}/>
+        <Route path="/question/:question_id" component={requireAuth(Question, null)}/>
         <Route component={Page404} />
     </Switch>
   </Router>

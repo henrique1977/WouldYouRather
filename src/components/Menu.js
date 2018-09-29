@@ -23,7 +23,7 @@ const Menu = ({page, authedUser, logout, history}) => {
         </div>
         <div className="menu-right">
           <div className="menu-item-hello">Welcome, {name}</div>
-            <button className="menu-item logout-button" href="" onClick={doLogout}>Logout</button>
+            <button className="menu-item logout-button" onClick={doLogout}>Logout</button>
         </div>
       </div>
       <div className="menu-separator">

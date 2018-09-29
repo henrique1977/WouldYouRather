@@ -1,5 +1,6 @@
 import React from 'react';
 import { objToArray } from '../library/functions';
+import Avatar from './Avatar';
 
 export const Question = ({user}) => {
 
@@ -10,7 +11,7 @@ export const Question = ({user}) => {
   return (
       <div className="table-row">
         <div className="text">{user.name}</div>
-        <div className="text avatar"><img src={user.avatarURL} alt="avatar" width="50" height="50" className="question-avatar" /></div>
+        <Avatar url={user.avatarURL} name={user.name} divClass="text avatar" width="50" height="50" />        
         <div className="num">{total}</div>
         <div className="num">{numOfQuestions}</div>
         <div className="num">{numOfAnswers}</div>
@@ -19,3 +20,5 @@ export const Question = ({user}) => {
 };
 
 export default Question;
+
+//<div className="text avatar"><img src={user.avatarURL} alt={`${user.name}'s avatar`} width="50" height="50" className="question-avatar" /></div>

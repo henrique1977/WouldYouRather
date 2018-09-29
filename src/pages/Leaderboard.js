@@ -9,13 +9,7 @@ class Leaderboard extends React.Component {
 
 
   render() {
-
-    console.log(this.props);
-
-    console.log(this.props.users.users);
     const {users} = this.props.users;
-
-    console.log(objToArray(users));
 
     return (
       <div className="pages-wrapper">

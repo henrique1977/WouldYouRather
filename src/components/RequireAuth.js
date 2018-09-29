@@ -2,13 +2,15 @@ import React from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../redux/actions/AuthedUser';
 
-export default function(PageComponent, nextPage) {
+export default function(PageComponent, nextPage = null) {
   class Auth extends React.Component {
 
-    componentWillMount() {
+    componentDidMount() {
       // Check if user is Authenticated; if not, redirect to /login
       if (!this.props.isAuthedUser) {
-        this.props.setNextPage(nextPage);
+        if (nextPage) {
+            this.props.setNextPage(nextPage);
+        }
         this.props.history.push('/login');
       }
     }

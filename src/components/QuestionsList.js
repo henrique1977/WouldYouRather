@@ -7,10 +7,6 @@ import MyButton from './MyButton';
 
 const QuestionsList = ({showAnswered, setShowAnswered, questions, users}) => {
 
-  console.log('inside questionsList');
-  console.log(questions);
-  console.log(users);
-
   const { answered, unanswered } = questions;
   const questionsArray = (showAnswered) ? answered : unanswered;
   const answerButton = (showAnswered)
@@ -29,6 +25,5 @@ const QuestionsList = ({showAnswered, setShowAnswered, questions, users}) => {
   </div>
   )
 }
-
 
 export default withState('showAnswered', 'setShowAnswered', false)(QuestionsList);;

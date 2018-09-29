@@ -1,5 +1,6 @@
 import React from 'react';
 import DisplayBox from './DisplayBox';
+import Avatar from './Avatar';
 
 const QuestionUnanswered = ({question, processUpdateAnswer, userId, author}) => {
 
@@ -12,7 +13,7 @@ const QuestionUnanswered = ({question, processUpdateAnswer, userId, author}) => 
 
     <DisplayBox title={title}
       leftContent={
-        <div className="avatar"><img src={author.avatarURL} alt="avatar" width="100" height="100" className="question-avatar" /></div>
+        <Avatar url={author.avatarURL} name={author.name} />
       }
       rightContent={
         <div>
